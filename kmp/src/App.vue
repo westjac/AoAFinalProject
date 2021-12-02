@@ -1,6 +1,7 @@
 <template>
   <img alt="Reddit logo" style="height: 225px;" src="./assets/logo.png">
   <h1>KMP Reddit Scraper</h1>
+  <p>Ryan Driscoll & Jacob B. West - CSC 461</p>
 </template>
 
 <script>
