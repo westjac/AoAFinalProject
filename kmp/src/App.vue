@@ -1,16 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Reddit logo" style="height: 225px;" src="./assets/logo.png">
+  <h1>KMP Reddit Scraper</h1>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import {KMP} from "../scripts/KMP.js"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    // HelloWorld
+  },
+  setup() {
+    let txt = "ABABDABACDABABCABAB"
+    let pat = "ABABCABAB"
+    KMP(pat, txt);
+
+  },
 }
 </script>
 

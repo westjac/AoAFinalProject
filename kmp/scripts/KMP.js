@@ -1,4 +1,4 @@
-function KMP(pattern, text) {
+export function KMP(pattern, text) {
     let M = pattern.length;
     let N = text.length;
     let lps = new Array(M).fill(0);
@@ -48,6 +48,3 @@ function CalculateLPSArray(pattern, M, lps) {
     return lps;
 }
 
-let txt = "ABABDABACDABABCABAB";
-let pat = "ABABCABAB";
-KMP(pat, txt);
