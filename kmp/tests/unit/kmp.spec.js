@@ -1,11 +1,15 @@
-import * as KMP from  '../../scripts/KMP.js'
+import {KMP} from  '../../scripts/KMP.js'
 
 describe('KMP.js', () => {
-    it('renders props.msg when passed', () => {
-      const msg = 'new message'
-      const wrapper = shallowMount(HelloWorld, {
-        props: { msg }
-      })
-      expect(wrapper.text()).toMatch(msg)
+    it('finds single instance of test in the word test', () => {
+      //Arrange
+      const pattern = 'test'
+      const text = 'test'
+
+      //Act
+      var matchLocations = KMP(pattern, text)
+      
+      //Assert
+      expect(matchLocations.length).toBe(1)
     })
   })
