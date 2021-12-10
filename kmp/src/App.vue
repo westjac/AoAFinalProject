@@ -14,22 +14,51 @@
       <button @click="RunKMP">Get Count!</button>
     </div>
     <span>Number of Matches: {{ wordCount }}</span>
+    <div id="runTime">
+      <ScatterChart :chartData="testData" />
+    </div>
   </div>
 </template>
 
 <script>
 import { GetRedditPosts } from "../scripts/app.js";
+import { ScatterChart } from "vue-chart-3";
+import { TestRunTime } from "../scripts/RunTimeTest.js";
 
 export default {
   name: "App",
-  components: {
-    // HelloWorld
+  components: { ScatterChart },
+  setup() {
+    const runTimeData = TestRunTime();
+    const testData = {
+      datasets: [
+        {
+          label: "Test Point",
+          data: runTimeData,
+          backgroundColor: ["#ff4300"],
+        },
+      ],
+      options: {
+        scales: {
+          yAxis: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: "Your Title",
+              },
+            },
+          ],
+        },
+      },
+    };
+
+    return { testData };
   },
-  setup() {},
   methods: {
     async RunKMP() {
       this.wordCount = await GetRedditPosts(this.message);
     },
+    TestRunTime() {},
   },
   data() {
     return {
@@ -48,5 +77,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+#runTime {
+  margin: 1em;
 }
 </style>
