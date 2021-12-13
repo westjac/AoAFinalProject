@@ -10,6 +10,10 @@ export function TestRunTime() {
   let lengthOfString = 0;
   let data = [];
 
+  //CSV Initialization
+  let csvContent = "data:text/csv;charset=utf-8,";
+  csvContent += "Word Count, Time (ms) \r\n"
+
   for (let i = 0; i < numberOfTests; i++) {
     startTime = performance.now();
     KMP(testPattern, testString);
@@ -20,14 +24,16 @@ export function TestRunTime() {
     let record = { x: lengthOfString, y: totalTime };
     data.push(record);
 
-    testString += GetRandomCharacters();
+    //CSV Creation
+    csvContent += `${lengthOfString},${totalTime}\r\n`;
 
-    //if (i % 5 == 0) {
-    //  testString += testPattern; // periodically add in our pattern
-    //}
+    testString += GetRandomCharacters();
   }
 
-  return data;
+  //CSV Encoding
+  var encodedUri = encodeURI(csvContent);
+
+  return [data, encodedUri];
 }
 
 function GetRandomCharacters() {

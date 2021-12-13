@@ -16,6 +16,7 @@
     <span>Number of Matches: {{ wordCount }}</span>
     <div id="runTime">
       <ScatterChart :chartData="testData" />
+      <button @click="DowloadCSV(encodedUri)">Download Chart Data</button>
     </div>
   </div>
 </template>
@@ -29,7 +30,8 @@ export default {
   name: "App",
   components: { ScatterChart },
   setup() {
-    const runTimeData = TestRunTime();
+    let [runTimeData, encodedUri] = TestRunTime();
+
     const testData = {
       datasets: [
         {
@@ -52,13 +54,16 @@ export default {
       },
     };
 
-    return { testData };
+    return { testData, encodedUri };
   },
   methods: {
     async RunKMP() {
       this.wordCount = await GetRedditPosts(this.message);
     },
     TestRunTime() {},
+    DowloadCSV(uri) {
+      window.location.assign(uri)
+    }
   },
   data() {
     return {
