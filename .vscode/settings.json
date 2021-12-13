@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/4377e6eb-cdfd-4751-a235-1f88284e021e/resourceGroups/AoAFinalProject/providers/Microsoft.Web/sites/Reddit-KMP",
+    "appService.deploySubpath": "."
+}
